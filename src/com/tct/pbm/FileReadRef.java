@@ -85,12 +85,82 @@ public class FileReadRef {
 			} else if (line.contains(".TXT")){ // Date
 				break;
 			} else {
+				break;
 				
 			}
 		}
 		return line;
 	}
-	
+	//중복라인 제거 함수
+	public static ArrayList<String> lineConverting(ArrayList<String> arr) {
+		ArrayList<String> rtn = new ArrayList<>();
+        for(int i=0; i<arr.size();i++) {
+            String t = arr.get(i);
+            int count =0;
+            for(int j=i; j<arr.size()-1; j++){
+
+                if(arr.get(j).equals(arr.get(j+1))){
+                    count++;
+                }else {
+                    break;
+                }
+            }
+            if(count>0) {
+                i+=count;
+                rtn.add((count+1)+"#"+arr.get(i));
+                System.out.println("연속중복 : "+count);
+                System.out.println("연속중복 => "+arr.get(i));
+            }else {
+                rtn.add(arr.get(i));
+            }
+        }
+		System.out.println(rtn.toString());
+		return rtn;
+	}
+	public static ArrayList<String> charConverting(ArrayList<String> arr){
+		ArrayList<String> rtn = new ArrayList<>();
+		arr.forEach((item)->{
+			String diffTarget= item;
+			//System.out.println(item);
+			String[] ch = item.split("");
+			ArrayList<String> rt = new ArrayList<String>();
+			String rtString="";
+			for(int i=0 ; i<ch.length; i++) {
+				String comp = "";
+				String temp="";
+				int cnt=0;
+				for(int j=i; j<ch.length; j++) {
+					
+					comp+= ch[i];
+					if(diffTarget.contains(comp)) {
+						temp=comp;
+						cnt++;
+					}else {
+
+						//System.out.println("j==>"+ (j-1));
+						break;
+					}
+
+				}
+				if(cnt >= 3) {
+					//System.out.println(comp);
+					//System.out.println("indexOf==>"+ item.indexOf(temp));
+					
+					rt.add(temp.length()+ch[i]);
+					rtString+=temp.length()+ch[i];
+					i=item.indexOf(temp)+temp.length()-1;
+					diffTarget=diffTarget.substring(diffTarget.indexOf(temp)+temp.length() );
+				}else {
+					rt.add(ch[i]);
+					rtString+=ch[i];
+				}
+			//System.out.println(rt.toString());
+			}
+			rtn.add(rtString);
+		});
+		System.out.println(rtn.toString());
+		return rtn;
+	}
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		System.out.println("Scanner Start !!!");
@@ -98,17 +168,28 @@ public class FileReadRef {
 		String rootWritePath = "./OUTFILE/";
 		
 		String rtnFileName = inputScanner();
-		System.out.println(">>>> : " + rtnFileName);
-		String fullPath = rootReadPath + rtnFileName;
-		ArrayList<String> rtnRead=FileReader(fullPath);
-		System.out.println(rtnRead.toString());
-		
+		if(!rtnFileName.isEmpty()) {
+			System.out.println(">>>> : " + rtnFileName);
+			String fullPath = rootReadPath + rtnFileName;
+			ArrayList<String> rtnRead=FileReader(fullPath);
+			System.out.println(rtnRead.toString());
+		}
+
 		System.out.println("Depth BigFile Scanning !!!");
 		String rootBigFilePath = "./BIGFILE";
 		
 		String rtnDepthFileName = inputScanner();
-		String rtnBigFilePath = Listfile(rootBigFilePath, rtnDepthFileName);
-		System.out.println(">>>> : " + rtnBigFilePath);
+		if(!rtnDepthFileName.isEmpty()) {
+			String rtnBigFilePath = Listfile(rootBigFilePath, rtnDepthFileName);
+			ArrayList<String> rtnBigFileRead=FileReader(rtnBigFilePath);
+			System.out.println(">>>> : " + rtnBigFilePath);
+			
+			//문자열 Line 중복
+			ArrayList<String> rtnLine = lineConverting(rtnBigFileRead);
+			charConverting(rtnLine);
+		}
+
+		
 	}
 
 }
