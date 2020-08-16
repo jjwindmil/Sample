@@ -36,7 +36,8 @@ public class ThreadRunnable {
             };
 
             // executorService.execute(runnable); //execute는 작업처리 결과 못받음
-            executorService.submit(runnable); // submit은 작업처리 결과를 Future타입으로 리턴
+            executorService.
+                    submit(runnable); // submit은 작업처리 결과를 Future타입으로 리턴
 
             Thread.sleep(10);
         }
