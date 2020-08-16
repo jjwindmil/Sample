@@ -54,14 +54,14 @@ public class FileReadRef {
         File[] fList = dir.listFiles();
         String rtnPath = "";
         for(int i=0; i<fList.length; i++) {
-        	if( fList[i].isFile() ) { 
-        		System.out.println( fList[i].getPath() ); // ������ FullPath ���
+        	if( fList[i].isFile() ) {
+        		System.out.println( fList[i].getPath() ); // 파일의 FullPath 출력
         		System.out.println(fList[i].getName());
         		if(fileName.equals(fList[i].getName())){
         			return fList[i].getPath();
         		}
         	} else if( fList[i].isDirectory() ) {
-        		rtnPath = Listfile( fList[i].getPath(), fileName ); // ����Լ� ȣ�� }
+        		rtnPath = Listfile( fList[i].getPath(), fileName ); // 재귀함수 호출 }
         		if(rtnPath!="") {
         			return rtnPath;
         		}
