@@ -12,29 +12,29 @@ import java.net.Socket;
 
 public class SocketServer {
 	public static Socket createServer(int port) throws IOException {
-        Socket socket = null;                //Client¿Í Åë½ÅÇÏ±â À§ÇÑ Socket
-        ServerSocket server_socket = null;  //¼­¹ö »ı¼ºÀ» À§ÇÑ ServerSocket
-        try{
-            server_socket = new ServerSocket(port);
-            System.out.println("¼­¹ö ¿ÀÇÂ!!");
-            socket = server_socket.accept();    //¼­¹ö »ı¼º , Client Á¢¼Ó ´ë±â
-        } catch(IOException e) {
-            System.out.println("ÇØ´ç Æ÷Æ®°¡ ¿­·ÁÀÖ½À´Ï´Ù.");
-        }
-        
-        return socket;
+		Socket socket = null;                //Clientì™€ í†µì‹ í•˜ê¸° ìœ„í•œ Socket
+		ServerSocket server_socket = null;  //ì„œë²„ ìƒì„±ì„ ìœ„í•œ ServerSocket
+		try{
+			server_socket = new ServerSocket(port);
+			System.out.println("ì„œë²„ ì˜¤í”ˆ!!");
+			socket = server_socket.accept();    //ì„œë²„ ìƒì„± , Client ì ‘ì† ëŒ€ê¸°
+		} catch(IOException e) {
+			System.out.println("í•´ë‹¹ í¬íŠ¸ê°€ ì—´ë ¤ìˆìŠµë‹ˆë‹¤.");
+		}
+
+		return socket;
 	}
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		BufferedReader in = null;            //Client·ÎºÎÅÍ µ¥ÀÌÅÍ¸¦ ÀĞ¾îµéÀÌ±â À§ÇÑ ÀÔ·Â½ºÆ®¸²
-		PrintWriter out = null; 
+		BufferedReader in = null;            //Clientë¡œë¶€í„° ë°ì´í„°ë¥¼ ì½ì–´ë“¤ì´ê¸° ìœ„í•œ ì…ë ¥ìŠ¤íŠ¸ë¦¼
+		PrintWriter out = null;
 		Socket socket = createServer(9876);
-		InputStream inputStream = socket.getInputStream(); // socketÀÇ InputStreamÀ¸·Î ºÎÅÍ StreamÀ» ¾òÀ½.
+		InputStream inputStream = socket.getInputStream(); // socketì˜ InputStreamìœ¼ë¡œ ë¶€í„° Streamì„ ì–»ìŒ.
 		in = new BufferedReader(new InputStreamReader(inputStream));
-		out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()))); //Ãâ·Â½ºÆ®¸² »ı¼º
+		out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()))); //ì¶œë ¥ìŠ¤íŠ¸ë¦¼ ìƒì„±
 		String cur="";
 		while((cur=in.readLine())!=null) {
-			
+
 		}
 	}
 

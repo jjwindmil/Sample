@@ -5,8 +5,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
 public class ThreadRunnable {
-	public static void main(String[] args) throws InterruptedException {
-		// TODO Auto-generated method stub
+    public static void main(String[] args) throws InterruptedException {
+        // TODO Auto-generated method stub
 		/*
 		ThreadClass2 threadClass = new ThreadClass2();
 		Thread thread = new Thread(threadClass);
@@ -20,35 +20,35 @@ public class ThreadRunnable {
 		}
 		*/
         ExecutorService executorService = Executors.newFixedThreadPool(2);
-        
+
         for (int i = 0; i < 10; i++) {
             Runnable runnable = new Runnable() {
                 @Override
                 public void run() {
                     ThreadPoolExecutor threadPoolExecutor = (ThreadPoolExecutor) executorService;
- 
+
                     int poolSize = threadPoolExecutor.getPoolSize();
                     String threadName = Thread.currentThread().getName();
-                    System.out.println("[ÃÑ ½º·¹µå °³¼ö: " + poolSize + "] ÀÛ¾÷ ½º·¹µå ÀÌ¸§: " + threadName);
- 
-                    int value = Integer.parseInt("¼ýÀÚ");
+                    System.out.println("[ì´ ìŠ¤ë ˆë“œ ê°œìˆ˜: " + poolSize + "] ìž‘ì—… ìŠ¤ë ˆë“œ ì´ë¦„: " + threadName);
+
+                    int value = Integer.parseInt("ìˆ«ìž");
                 }
             };
- 
-            // executorService.execute(runnable); //execute´Â ÀÛ¾÷Ã³¸® °á°ú ¸ø¹ÞÀ½
-            executorService.submit(runnable); // submitÀº ÀÛ¾÷Ã³¸® °á°ú¸¦ FutureÅ¸ÀÔÀ¸·Î ¸®ÅÏ
- 
+
+            // executorService.execute(runnable); //executeëŠ” ìž‘ì—…ì²˜ë¦¬ ê²°ê³¼ ëª»ë°›ìŒ
+            executorService.submit(runnable); // submitì€ ìž‘ì—…ì²˜ë¦¬ ê²°ê³¼ë¥¼ Futureíƒ€ìž…ìœ¼ë¡œ ë¦¬í„´
+
             Thread.sleep(10);
         }
         executorService.shutdown();
 
-	}
+    }
 
 }
 class ThreadClass2 implements Runnable{
-	
-	public void run() {
-		System.out.println("Running..");
-	}
+
+    public void run() {
+        System.out.println("Running..");
+    }
 
 }

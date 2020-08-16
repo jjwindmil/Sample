@@ -7,22 +7,22 @@ import java.util.List;
 import java.util.Set;
 
 public class StringUtil {
-	//	¹®ÀÚ¿­ µÚÁı±â
+	//	ë¬¸ìì—´ ë’¤ì§‘ê¸°
 	public static String reverseString(String s){
-        return (new StringBuffer(s)).reverse().toString();
-    }
-	
-	
-	//	¸î¹øÂ° ¼ıÀÚ ±¸ÇÏ±â
+		return (new StringBuffer(s)).reverse().toString();
+	}
+
+
+	//	ëª‡ë²ˆì§¸ ìˆ«ì êµ¬í•˜ê¸°
 	public void getNumericValue(String param) {
 		for(int i=0; i < param.length(); i++) {
 			int n1 = Character.getNumericValue(param.charAt(i));
 		}
 	}
-	
-	
-	
-	//	¹®ÀÚ¿­¿¡ Áßº¹¹®ÀÚ Á¦°Å
+
+
+
+	//	ë¬¸ìì—´ì— ì¤‘ë³µë¬¸ì ì œê±°
 	public void isHasValue() {
 		String tmp = "abfgadfaefd";
 		String ret = "";
@@ -33,28 +33,28 @@ public class StringUtil {
 			}
 		}
 	}
-	
-	//	Áßº¹È½¼ö ±¸ÇÏ±â
-    public static void checkDuplicate() {
-    	 
-        String text = "a r b k c d se f g a d f s s f d s ft gh f ws w f v x s g h d h j j k f sd j e wed a d f";
- 
-        List<String> list = Arrays.asList(text.split(" "));
- 
-        Set<String> uniqueWords = new HashSet<String>(list);
-        for (String word : uniqueWords) {
-            System.out.println(word + ": " + Collections.frequency(list, word));
-        }
-    }
-	
-	
-	
+
+	//	ì¤‘ë³µíšŸìˆ˜ êµ¬í•˜ê¸°
+	public static void checkDuplicate() {
+
+		String text = "a r b k c d se f g a d f s s f d s ft gh f ws w f v x s g h d h j j k f sd j e wed a d f";
+
+		List<String> list = Arrays.asList(text.split(" "));
+
+		Set<String> uniqueWords = new HashSet<String>(list);
+		for (String word : uniqueWords) {
+			System.out.println(word + ": " + Collections.frequency(list, word));
+		}
+	}
+
+
+
 	public static void main(String[] args) {
-		
+
 //		System.out.println(reverseString("abcdefg"));
-		
+
 		checkDuplicate();
-		
+
 	}
 
 }

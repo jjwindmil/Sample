@@ -14,16 +14,16 @@ public class ThreadCallable {
 
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
 		// TODO Auto-generated method stub
-		List<String> testSample = Arrays.asList("°¡", "³ª", "´Ù", "¶ó", "¸¶", "¹Ù", "»ç", "ÈÄÈÄ", "1", "10", "100", "-100"); 
-		
-		// 4°³ÀÇ Thread¸¦ °¡Áø ThreadPool»ı¼º 
+		List<String> testSample = Arrays.asList("ê°€", "ë‚˜", "ë‹¤", "ë¼", "ë§ˆ", "ë°”", "ì‚¬", "í›„í›„", "1", "10", "100", "-100");
+
+		// 4ê°œì˜ Threadë¥¼ ê°€ì§„ ThreadPoolìƒì„±
 		ExecutorService threadPool = Executors.newFixedThreadPool(4);
 
-		// ThreadµéÀÌ ºñµ¿±â·Î ¼öÇàµÇ¸é ±× °á°ú¸¦ ´ãÀ» Futrure °´Ã¼ 
+		// Threadë“¤ì´ ë¹„ë™ê¸°ë¡œ ìˆ˜í–‰ë˜ë©´ ê·¸ ê²°ê³¼ë¥¼ ë‹´ì„ Futrure ê°ì²´
 		List<Future<String>> futures = new ArrayList<Future<String>>();
 
 		for (final String sample : testSample) {
-			
+
 			Callable<String> callable = new Callable<String>() {
 				@Override
 				public String call() throws Exception {
@@ -32,17 +32,17 @@ public class ThreadCallable {
 
 					return "Time : "+ new Date() + " -Thread Name : " + Thread.currentThread().getName() + " - Text : " + sample;
 				}
-				
+
 			};
-			// »ı¼ºµÈ callableµéÀ» threadpool¿¡¼­ ¼öÇà½ÃÅ°°í °á°ú´Â Future ¸ñ·Ï¿¡ ´ã´Â´Ù. 
+			// ìƒì„±ëœ callableë“¤ì„ threadpoolì—ì„œ ìˆ˜í–‰ì‹œí‚¤ê³  ê²°ê³¼ëŠ” Future ëª©ë¡ì— ë‹´ëŠ”ë‹¤.
 			futures.add(threadPool.submit(callable));
 
 		}
 		threadPool.shutdown();
-		
+
 		List<String> result = new ArrayList<String>();
-		for (Future<String> future : futures) { // future¿¡ ´ã±ä °á°ú °´Ã¼¸¦ ¹Ş¾Æ List¿¡ ´ã´Â´Ù. 
-			result.add(future.get()); 
+		for (Future<String> future : futures) { // futureì— ë‹´ê¸´ ê²°ê³¼ ê°ì²´ë¥¼ ë°›ì•„ Listì— ë‹´ëŠ”ë‹¤.
+			result.add(future.get());
 		}
 	}
 

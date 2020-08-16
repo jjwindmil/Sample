@@ -55,13 +55,13 @@ public class FileReadRef {
         String rtnPath = "";
         for(int i=0; i<fList.length; i++) {
         	if( fList[i].isFile() ) { 
-        		System.out.println( fList[i].getPath() ); // ÆÄÀÏÀÇ FullPath Ãâ·Â
+        		System.out.println( fList[i].getPath() ); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ FullPath ï¿½ï¿½ï¿½
         		System.out.println(fList[i].getName());
         		if(fileName.equals(fList[i].getName())){
         			return fList[i].getPath();
         		}
         	} else if( fList[i].isDirectory() ) {
-        		rtnPath = Listfile( fList[i].getPath(), fileName ); // Àç±ÍÇÔ¼ö È£Ãâ }
+        		rtnPath = Listfile( fList[i].getPath(), fileName ); // ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ È£ï¿½ï¿½ }
         		if(rtnPath!="") {
         			return rtnPath;
         		}
@@ -91,7 +91,7 @@ public class FileReadRef {
 		}
 		return line;
 	}
-	//Áßº¹¶óÀÎ Á¦°Å ÇÔ¼ö
+	//ì¤‘ë³µ ë¼ì¸ ì œê±°í•¨ìˆ˜
 	public static ArrayList<String> lineConverting(ArrayList<String> arr) {
 		ArrayList<String> rtn = new ArrayList<>();
         for(int i=0; i<arr.size();i++) {
@@ -108,8 +108,8 @@ public class FileReadRef {
             if(count>0) {
                 i+=count;
                 rtn.add((count+1)+"#"+arr.get(i));
-                System.out.println("¿¬¼ÓÁßº¹ : "+count);
-                System.out.println("¿¬¼ÓÁßº¹ => "+arr.get(i));
+                System.out.println("ì—°ì†ì¤‘ë³µ: "+count);
+                System.out.println("ì—°ì†ì¤‘ë³µ => "+arr.get(i));
             }else {
                 rtn.add(arr.get(i));
             }
@@ -184,7 +184,7 @@ public class FileReadRef {
 			ArrayList<String> rtnBigFileRead=FileReader(rtnBigFilePath);
 			System.out.println(">>>> : " + rtnBigFilePath);
 			
-			//¹®ÀÚ¿­ Line Áßº¹
+			//ë¬¸ìì—´ Line ì¤‘ë³µ
 			ArrayList<String> rtnLine = lineConverting(rtnBigFileRead);
 			charConverting(rtnLine);
 		}
