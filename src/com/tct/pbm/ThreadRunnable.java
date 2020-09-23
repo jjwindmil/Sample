@@ -19,7 +19,7 @@ public class ThreadRunnable {
 			e.printStackTrace();
 		}
 		*/
-        ExecutorService executorService = Executors.newFixedThreadPool(2);
+        ExecutorService executorService = Executors.newFixedThreadPool(4);
 
         for (int i = 0; i < 10; i++) {
             Runnable runnable = new Runnable() {
