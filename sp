@@ -2,6 +2,8 @@ jetty
 
 https://blog.naver.com/PostView.naver?blogId=ambidext&logNo=222434508009&categoryNo=60&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage=1&from=postView
 
+json
+https://hianna.tistory.com/629
 ```java
 public class DateClient {
   public static void main(String[] args) throws IOException {
@@ -777,4 +779,6 @@ public class FileClient {
         method.invoke(beanObj);
  
     }
+
+17.
 
